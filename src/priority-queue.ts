@@ -7,11 +7,11 @@ export class PriorityQueue {
     options.strategy ||= BinaryHeapStrategy;
     options.comparator ||= (a, b) => (a || 0) - (b || 0);
     
-    this.priv = new options.strategy(options);
+    this.strategy = new options.strategy(options);
     this._length = options?.initialValues?.length || 0;
   }
 
-  private priv : Strategy;
+  private strategy : Strategy;
   private _length : number;
 
   get length() {
@@ -20,7 +20,7 @@ export class PriorityQueue {
   
   queue(value) {
     this._length++;
-    this.priv.queue(value);
+    this.strategy.queue(value);
   }
 
   dequeue() {
@@ -28,18 +28,18 @@ export class PriorityQueue {
       throw new Error('Empty queue');
     
     this._length--;
-    return this.priv.dequeue();
+    return this.strategy.dequeue();
   }
 
-  peek(value) {
-    if (!this._length)
+  peek() {
+    if (this._length === 0)
       throw new Error('Empty queue');
     
-    return this.priv.peek();
+    return this.strategy.peek();
   }
 
   clear() {
     this._length = 0;
-    return this.priv.clear();
+    return this.strategy.clear();
   }
 }
