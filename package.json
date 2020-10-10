@@ -10,7 +10,16 @@
     "test": "npm run build && node dist/test",
     "prepublishOnly": "npm test"
   },
-  "author": "Astronaut Labs",
+  "repository": {
+    "url": "git@github.com:astronautlabs/priority-queue.git"
+  },
+  "bugs": {
+    "url": "https://github.com/astronautlabs/priority-queue/issues"
+  },
+  "author": {
+    "url": "https://astronautlabs.com/",
+    "name": "Astronaut Labs"
+  },
   "license": "MIT",
   "devDependencies": {
     "@types/chai": "^4.2.13",
