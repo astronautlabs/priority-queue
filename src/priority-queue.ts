@@ -2,6 +2,8 @@ import { BinaryHeapStrategy } from "./binary-heap-strategy";
 import { Strategy } from "./strategy";
 import { Options } from './options';
 
+export const EMPTY = undefined;
+
 export class PriorityQueue {
   constructor(options : Options = {}) {
     options.strategy ||= BinaryHeapStrategy;
@@ -33,7 +35,7 @@ export class PriorityQueue {
 
   peek() {
     if (this._length === 0)
-      throw new Error('Empty queue');
+      return EMPTY;
     
     return this.strategy.peek();
   }
